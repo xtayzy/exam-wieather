@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 120px; /* Отступ для фиксированного блока */
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 20px; /* Отступ сверху для фиксированных элементов */
+        }
+
+        .card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 10px;
+            background-color: #e9e9e9;
+            border-radius: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: scale(1.05);
+        }
+
+        .card img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+
+        .img_block {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            background-color: #1254c5;
+            height: 100%;
+        }
+
+        .card .title {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #f4f4f4;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+        }
+
+        .navigation, .search {
+            display: flex;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 15px;
+            font-size: 16px;
+            font-weight: bold;
+            color: white;
+            background-color: #007BFF;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            width: 200px;
+        }
+
+        input[type="text"]:focus {
+            border-color: #007BFF;
+            outline: none;
+        }
+
+        .modal {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            align-items: center;
+            justify-content: center;
+            display: none;
+            z-index: 1500;
+        }
+
+        .black {
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            background: black;
+            opacity: .6;
+            z-index: 2;
+        }
+
+        .modal__content {
+            width: 100%;
+            height: auto;
+            position: fixed;
+            max-width: 400px;
+            background-color: #f4f4f4;
+            z-index: 1600;
+            border: 3px solid #000000;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+            color: #000000;
+        }
+
+        .modal__content img {
+            width: 100%;
+        }
+
+        .active .modal {
+            display: flex;
+        }
+    </style>
+</head>
+<body class="" onclick="closeModal()">
+<div class="header">
+    <div class="navigation">
+        <button id="prevPage" onclick="prevPage()">prev page</button>
+        <button id="nextPage" onclick="nextPage()">next page</button>
+    </div>
+    <div class="search">
+        <input type="text" id="film_name" placeholder="название">
+        <button onclick="searchFilms()">поиск</button>
+    </div>
+</div>
+<div class="block">
+    <div class="container" id="movies-container">
+
+    </div>
+</div>
+<div class="modal">
+    <div class="black"></div>
+    <div class="modal__content">
+        <div>
+            <img src="" alt="">
+        </div>
+        <div>
+
+        </div>
+        <div>
+            год:
+        </div>
+        <div>
+            рейтинг:
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>

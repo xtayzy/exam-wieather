@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        body {
+            padding: 0;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            cursor: url("/doExam/coursors/kotik — копия.png"), auto;
+        }
+
+        header {
+            position: fixed;
+            top: 0;
+            z-index: 100;
+            width: calc(100% - 120px);
+            padding: 20px 60px 20px 60px;
+            display: flex;
+            justify-content: space-between;
+            background-color: rgba(246, 246, 246, 1.00);
+            flex-wrap: wrap;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        header form input {
+            height: 50px;
+            width: 300px;
+            background-color: rgba(255, 255, 255, 1.00);
+            font-size: 20px;
+            padding: 0 0 0 20px;
+        }
+
+        .my-weather {
+            color: rgb(65, 147, 148);
+            font-size: 50px;
+            font-weight: 600;
+        }
+
+        .days {
+            margin-top: 97.33px;
+            background-color: #404040;
+            color: white;
+            padding-left: 60px;
+            display: flex;
+        }
+
+        .days div {
+            padding: 15px 35px 15px 35px;
+            font-size: 35px;
+            border-bottom: 3px solid #404040;
+        }
+
+        .days div:hover {
+            border-left: 1px solid #636363;
+            border-right: 1px solid #636363;
+            border-bottom: 3px solid #009595;
+            cursor: url("/doExam/coursors/4 — копия.png"), auto;
+        }
+
+        .today {
+            border-left: 1px solid #636363;
+            border-right: 1px solid #636363;
+        }
+
+        .fife-days {
+            border-left: 1px solid #636363;
+            border-right: 1px solid #636363;
+        }
+
+        #city:hover {
+            cursor: url("/doExam/coursors/4 — копия.png"), auto;
+        }
+
+        .block-1 {
+            padding: 40px 60px 40px 60px;
+            background-color: #d7d7d7;
+            display: flex;
+            flex-direction: column;
+            gap: 40px
+        }
+
+        .block-1-weather {
+            background-color: #f6f6f6;
+            padding: 30px;
+            color: #009595;
+        }
+
+        .block-1-header {
+            font-size: 30px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .main {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .main-1 {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            color: #686a6a;
+            padding: 20px;
+        }
+
+        .main-1 img {
+            width: 220px;
+            height: 220px;
+        }
+
+        .clear {
+            position: absolute;
+            margin-top: 150px;
+        }
+
+        .temp {
+            color: black;
+            font-size: 100px;
+        }
+
+        .real-feel {
+            margin-top: 10px;
+        }
+
+        .sunrise {
+            font-size: 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 23px;
+            align-items: unset;
+        }
+
+        .block_hourly {
+            display: flex;
+            align-items: stretch;
+            margin-top: 35px;
+            margin-left: 30px;
+            margin-right: 30px;
+        }
+
+        .block-1-des {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .block-1-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .weather-hours-block {
+            display: flex;
+            overflow-x: auto;
+        }
+
+        .wea-3, .wea-4, .wea-5, .wea-6 {
+            height: 80px;
+            display: flex;
+            align-items: center;
+            color: black;
+            font-size: 25px;
+        }
+
+        .wea-3, .wea-4, .wea-5 {
+            border-bottom: 1px solid #8e8f92;
+        }
+
+        .wea-1 {
+            display: flex;
+            align-items: center;
+            height: 50px;
+            font-size: 25px;
+            color: black;
+        }
+
+        .wea-2 {
+            height: 80px;
+        }
+
+        .wea-2 img {
+            width: 67px;
+            height: 80px;
+        }
+
+        .des-text {
+            color: #8e8f92;
+        }
+
+        .item {
+            padding-left: 150px;
+        }
+
+        .wea-6 {
+            display: flex;
+            gap: 10px;
+        }
+
+        .first-page {
+            display: none;
+        }
+
+
+        .second-page {
+            display: none;
+        }
+
+        .block-2 {
+            padding: 40px 60px 40px 60px;
+            background-color: #d7d7d7;
+            display: flex;
+            flex-direction: column;
+            gap: 40px
+        }
+
+        .days-f {
+            width: 100%;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .day-f {
+            width: 186.13px;
+            max-width: 500px;
+            display: flex;
+            padding: 60px;
+            flex-direction: column;
+            gap: 30px;
+            background-color: #ededed;
+            font-size: 25px;
+            color: #686a6a;
+        }
+
+        .day-f img {
+            width: 186.13px;
+            height: 186.13px;
+        }
+
+
+    </style>
+</head>
+<body class="">
+<header>
+    <div class="my-weather">MY WEATHER</div>
+    <div>
+        <form action="">
+            <input type="text" placeholder="поиск по городу">
+        </form>
+    </div>
+</header>
+<div class="block">
+    <header>
+        <div class="my-weather">MY WEATHER</div>
+        <div>
+            <form action="" id="form">
+                <input id="city" type="text" placeholder="поиск по городу">
+                <!--                <button>поиск</button>-->
+            </form>
+        </div>
+    </header>
+    <div class="days">
+        <div class="" id="today" onclick="weatherToday()">Today</div>
+        <div class="" id="fife-days" onclick="weatherFifeDays()">5-day forecast</div>
+    </div>
+    <div class="" id="first-page">
+        <div class="block-1">
+            <div class="block-1-weather">
+                <div class="block-1-header current">
+                    <div>CURRENT WEATHER</div>
+                    <div id="date_now">30.06.2018</div>
+                </div>
+                <div class="main" id="main">
+
+                </div>
+
+            </div>
+            <div class="block-1-weather">
+                <div class="block-1-header">
+                    HOURLY
+                </div>
+                <div class="block_hourly">
+                    <div class="block-1-des">
+                        <div class="wea-1" style="font-weight: 600">TODAY</div>
+                        <div class="des-text wea-2"></div>
+                        <div class="des-text wea-3">Forecast</div>
+                        <div class="des-text wea-4">Temp</div>
+                        <div class="des-text wea-5">RealFeel</div>
+                        <div class="des-text wea-6">Wind (km/h)</div>
+                    </div>
+                    <div class="weather-hours-block">
+
+                    </div>
+                </div>
+            </div>
+            <div class="block-1-weather" style="display: none">
+                <div class="block-1-header">
+                    NEARBY PLACES
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="second-page" id="second-page">
+        <div class="block-2">
+            <div class="days-f">
+                <div class="day-1">
+                    <div class="day-f">
+                        <div style="font-weight: 600; color: #009595; font-size: 30px">WEDNESDAY</div>
+                        <div>JUN 30</div>
+                        <div>
+                            <img src="https://openweathermap.org/img/w/01n.png" alt="">
+                        </div>
+                        <div style="color: black; font-size: 45px">25°</div>
+                        <div>Clear, Warm</div>
+                    </div>
+                </div>
+                <div class="day-2">
+
+                </div>
+                <div class="day-3">
+
+                </div>
+                <div class="day-4">
+
+                </div>
+                <div class="day-5">
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
